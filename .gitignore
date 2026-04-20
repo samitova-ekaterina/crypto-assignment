@@ -1,40 +1,31 @@
-.gradle/
-build/
-out/
+# Node modules
+/node_modules
 
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-!**/src/main/**/out/
-!**/src/test/**/out/
+# Compilation output
+/dist
 
-### IntelliJ IDEA ###
-.idea/
-*.iws
-*.iml
-*.ipr
+# pnpm deploy output
+/bundle
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+# Hardhat Build Artifacts
+/artifacts
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Hardhat compilation (v2) support directory
+/cache
 
-### VS Code ###
-.vscode/
+# Typechain output
+/types
 
-### Mac OS ###
-.DS_Store
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Hardhat coverage reports
+/coverage
+
+# Gas snapshot files
+/.gas-snapshot
+
+# Snapshot cheatcodes output
+/snapshots
