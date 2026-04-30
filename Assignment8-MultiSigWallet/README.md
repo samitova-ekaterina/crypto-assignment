@@ -255,27 +255,37 @@ This prevents a single owner from taking control of the wallet governance.
 
 Automated tests were written in TypeScript using Mocha and Chai.
 
+The tests cover both the main required functionality and additional edge cases.
+
 The tests cover:
 
 - deployment with correct owners;
 - correct required confirmations value;
 - receiving Ether;
+- emitting the Deposit event when Ether is received;
 - submitting a transaction;
+- emitting the SubmitTransaction event;
 - preventing non-owners from submitting transactions;
 - confirming transactions;
+- emitting the ConfirmTransaction event;
 - preventing duplicate confirmations;
-- revoking confirmations;
+- revoking confirmations before execution;
+- emitting the RevokeConfirmation event;
 - preventing execution without enough confirmations;
 - executing a transaction after enough confirmations;
+- emitting the ExecuteTransaction event;
+- rejecting confirmation for an invalid transaction id;
+- rejecting execution for an invalid transaction id;
+- rejecting revocation for an invalid transaction id;
 - adding a new owner through a multi-signature transaction;
+- emitting the OwnerAdded event;
 - removing an owner through a multi-signature transaction;
-- changing required confirmations through a multi-signature transaction.
-
-Test result:
-
-```text
-12 passing
-```
+- emitting the OwnerRemoved event;
+- changing the required number of confirmations through a multi-signature transaction;
+- emitting the RequiredConfirmationsChanged event;
+- preventing direct calls to addOwner;
+- preventing direct calls to removeOwner;
+- preventing direct calls to changeRequiredConfirmations.
 
 Full test command:
 
