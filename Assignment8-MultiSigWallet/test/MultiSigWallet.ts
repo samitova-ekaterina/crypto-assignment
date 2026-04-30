@@ -1,4 +1,4 @@
-import { expect } from "chai";
+﻿import { expect } from "chai";
 import { network } from "hardhat";
 
 const { ethers } = await network.connect();
@@ -241,5 +241,187 @@ describe("MultiSigWallet", function () {
         await wallet.executeTransaction(0);
 
         expect(await wallet.requiredConfirmations()).to.equal(1);
+    });
+
+    it("Should emit Deposit event when receiving Ether", async function () {
+        const { wallet, owner1 } = await deployWalletFixture();
+
+        const walletAddress = await wallet.getAddress();
+        const amount = ethers.parseEther("1");
+
+        await expect(
+            owner1.sendTransaction({
+                to: walletAddress,
+                value: amount,
+            })
+        )
+            .to.emit(wallet, "Deposit")
+            .withArgs(owner1.address, amount, amount);
+    });
+
+    it("Should emit SubmitTransaction event", async function () {
+        const { wallet, owner1, recipient } = await deployWalletFixture();
+
+        const amount = ethers.parseEther("0.5");
+
+        await expect(
+            wallet.connect(owner1).submitTransaction(recipient.address, amount, "0x")
+        )
+            .to.emit(wallet, "SubmitTransaction")
+            .withArgs(owner1.address, 0, recipient.address, amount, "0x");
+    });
+
+    it("Should emit ConfirmTransaction event", async function () {
+        const { wallet, owner1, recipient } = await deployWalletFixture();
+
+        const amount = ethers.parseEther("0.5");
+
+        await wallet.submitTransaction(recipient.address, amount, "0x");
+
+        await expect(wallet.connect(owner1).confirmTransaction(0))
+            .to.emit(wallet, "ConfirmTransaction")
+            .withArgs(owner1.address, 0);
+    });
+
+    it("Should emit RevokeConfirmation event", async function () {
+        const { wallet, owner1, recipient } = await deployWalletFixture();
+
+        const amount = ethers.parseEther("0.5");
+
+        await wallet.submitTransaction(recipient.address, amount, "0x");
+
+        await wallet.connect(owner1).confirmTransaction(0);
+
+        await expect(wallet.connect(owner1).revokeConfirmation(0))
+            .to.emit(wallet, "RevokeConfirmation")
+            .withArgs(owner1.address, 0);
+    });
+
+    it("Should emit ExecuteTransaction event", async function () {
+        const { wallet, owner1, owner2, recipient } = await deployWalletFixture();
+
+        const walletAddress = await wallet.getAddress();
+        const depositAmount = ethers.parseEther("1");
+        const transferAmount = ethers.parseEther("0.5");
+
+        await owner1.sendTransaction({
+            to: walletAddress,
+            value: depositAmount,
+        });
+
+        await wallet.submitTransaction(recipient.address, transferAmount, "0x");
+
+        await wallet.connect(owner1).confirmTransaction(0);
+        await wallet.connect(owner2).confirmTransaction(0);
+
+        await expect(wallet.connect(owner1).executeTransaction(0))
+            .to.emit(wallet, "ExecuteTransaction")
+            .withArgs(owner1.address, 0);
+    });
+
+    it("Should reject confirmation for invalid transaction id", async function () {
+        const { wallet, owner1 } = await deployWalletFixture();
+
+        await expect(
+            wallet.connect(owner1).confirmTransaction(999)
+        ).to.be.revertedWith("Transaction does not exist");
+    });
+
+    it("Should reject execution for invalid transaction id", async function () {
+        const { wallet, owner1 } = await deployWalletFixture();
+
+        await expect(
+            wallet.connect(owner1).executeTransaction(999)
+        ).to.be.revertedWith("Transaction does not exist");
+    });
+
+    it("Should reject revocation for invalid transaction id", async function () {
+        const { wallet, owner1 } = await deployWalletFixture();
+
+        await expect(
+            wallet.connect(owner1).revokeConfirmation(999)
+        ).to.be.revertedWith("Transaction does not exist");
+    });
+
+    it("Should not allow direct addOwner call", async function () {
+        const { wallet, nonOwner } = await deployWalletFixture();
+
+        await expect(
+            wallet.addOwner(nonOwner.address)
+        ).to.be.revertedWith("Only wallet can call this function");
+    });
+
+    it("Should not allow direct removeOwner call", async function () {
+        const { wallet, owner3 } = await deployWalletFixture();
+
+        await expect(
+            wallet.removeOwner(owner3.address)
+        ).to.be.revertedWith("Only wallet can call this function");
+    });
+
+    it("Should not allow direct changeRequiredConfirmations call", async function () {
+        const { wallet } = await deployWalletFixture();
+
+        await expect(
+            wallet.changeRequiredConfirmations(1)
+        ).to.be.revertedWith("Only wallet can call this function");
+    });
+
+    it("Should emit OwnerAdded event through a multi-sig transaction", async function () {
+        const { wallet, owner1, owner2, nonOwner } = await deployWalletFixture();
+
+        const walletAddress = await wallet.getAddress();
+
+        const data = wallet.interface.encodeFunctionData("addOwner", [
+            nonOwner.address,
+        ]);
+
+        await wallet.submitTransaction(walletAddress, 0, data);
+
+        await wallet.connect(owner1).confirmTransaction(0);
+        await wallet.connect(owner2).confirmTransaction(0);
+
+        await expect(wallet.executeTransaction(0))
+            .to.emit(wallet, "OwnerAdded")
+            .withArgs(nonOwner.address);
+    });
+
+    it("Should emit OwnerRemoved event through a multi-sig transaction", async function () {
+        const { wallet, owner1, owner2, owner3 } = await deployWalletFixture();
+
+        const walletAddress = await wallet.getAddress();
+
+        const data = wallet.interface.encodeFunctionData("removeOwner", [
+            owner3.address,
+        ]);
+
+        await wallet.submitTransaction(walletAddress, 0, data);
+
+        await wallet.connect(owner1).confirmTransaction(0);
+        await wallet.connect(owner2).confirmTransaction(0);
+
+        await expect(wallet.executeTransaction(0))
+            .to.emit(wallet, "OwnerRemoved")
+            .withArgs(owner3.address);
+    });
+
+    it("Should emit RequiredConfirmationsChanged event through a multi-sig transaction", async function () {
+        const { wallet, owner1, owner2 } = await deployWalletFixture();
+
+        const walletAddress = await wallet.getAddress();
+
+        const data = wallet.interface.encodeFunctionData(
+            "changeRequiredConfirmations",
+            [1]
+        );
+
+        await wallet.submitTransaction(walletAddress, 0, data);
+
+        await wallet.connect(owner1).confirmTransaction(0);
+        await wallet.connect(owner2).confirmTransaction(0);
+
+        await expect(wallet.executeTransaction(0))
+            .to.emit(wallet, "RequiredConfirmationsChanged")
+            .withArgs(1);
     });
 });
