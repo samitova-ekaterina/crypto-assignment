@@ -1,0 +1,27 @@
+{
+  "name": "Burnout Goblin",
+  "description": "A small exhausted creature representing the final stage of academic irritation and apathy.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/9.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Too tired to care anymore"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 5
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "High"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

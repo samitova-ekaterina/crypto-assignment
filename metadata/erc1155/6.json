@@ -1,0 +1,27 @@
+{
+  "name": "Group Project Hostage",
+  "description": "A student smiling politely while carrying the entire group project alone.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/6.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Trapped in team chaos"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 15
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "Extreme"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Epic"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

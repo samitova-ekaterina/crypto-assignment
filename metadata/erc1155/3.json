@@ -1,0 +1,27 @@
+{
+  "name": "Debugging Ghost",
+  "description": "A transparent student haunting the IDE after too many failed builds.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/3.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Lost inside endless errors"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 12
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "High"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Caffeine Prisoner",
+  "description": "A student trapped in a loop of coffee cups, unfinished notes, and permanent fatigue.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/2.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Dependent on coffee, still tired"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 18
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "High"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}
