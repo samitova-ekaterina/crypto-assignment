@@ -1,0 +1,27 @@
+{
+  "name": "Lecture Void",
+  "description": "A student sitting in a lecture while their mind has left the building.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/4.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Physically present, mentally gone"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 10
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "Medium"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

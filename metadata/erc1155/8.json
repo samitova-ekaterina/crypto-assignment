@@ -1,0 +1,27 @@
+{
+  "name": "Sleep-Deprived Coder",
+  "description": "A student coding at night, no longer remembering what the program was supposed to do.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/8.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Writing code without memory"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 7
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "High"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Epic"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

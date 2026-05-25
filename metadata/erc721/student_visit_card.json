@@ -1,0 +1,27 @@
+{
+  "name": "Soulbound Student Burnout Card: Elizabeth",
+  "description": "A non-transferable student visit card representing Elizabeth, a fictional student surviving university deadlines and academic burnout.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/elizabeth-student-card.png",
+  "attributes": [
+    {
+      "trait_type": "Student Name",
+      "value": "Elizabeth"
+    },
+    {
+      "trait_type": "Student ID",
+      "value": "ST-2026-009"
+    },
+    {
+      "trait_type": "Course",
+      "value": "Blockchain and Crypto"
+    },
+    {
+      "trait_type": "Year",
+      "value": "2026"
+    },
+    {
+      "trait_type": "Status",
+      "value": "Permanently Overdue"
+    }
+  ]
+}

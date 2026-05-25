@@ -1,0 +1,27 @@
+{
+  "name": "Panic Submitter",
+  "description": "A student pressing submit at 23:59 with shaking hands and no emotional resources left.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/5.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Uploading at the last second"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 20
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "Extreme"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

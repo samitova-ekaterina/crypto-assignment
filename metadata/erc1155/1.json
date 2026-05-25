@@ -1,0 +1,27 @@
+{
+  "name": "Deadline Zombie",
+  "description": "A burned-out student moving toward the deadline with empty eyes and zero hope.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/1.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Exhausted but still moving"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 8
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "Extreme"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

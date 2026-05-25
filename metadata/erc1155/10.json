@@ -1,0 +1,27 @@
+{
+  "name": "Silent Breakdown",
+  "description": "A student with a calm face and complete internal academic collapse.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/10.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Looks calm, internally collapsing"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 3
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "Extreme"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Legendary"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}

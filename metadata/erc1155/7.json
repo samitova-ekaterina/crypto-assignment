@@ -1,0 +1,27 @@
+{
+  "name": "Exam Doomsayer",
+  "description": "A student surrounded by exam papers and catastrophic predictions.",
+  "image": "ipfs://REPLACE_WITH_IMAGE_CID/7.png",
+  "attributes": [
+    {
+      "trait_type": "Emotional State",
+      "value": "Expecting failure in advance"
+    },
+    {
+      "trait_type": "Energy",
+      "value": 9
+    },
+    {
+      "trait_type": "Deadline Pressure",
+      "value": "Extreme"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Student",
+      "value": "Elizabeth"
+    }
+  ]
+}
